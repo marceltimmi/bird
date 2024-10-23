@@ -460,6 +460,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pipe
       objectReference: {fileID: 0}
+    - target: {fileID: 3354935553890660954, guid: ce8b704fb803e2745bd975e15109144c, type: 3}
+      propertyPath: m_Name
+      value: rohr unten
+      objectReference: {fileID: 0}
+    - target: {fileID: 4249589892408433027, guid: ce8b704fb803e2745bd975e15109144c, type: 3}
+      propertyPath: m_Name
+      value: rohr oben
+      objectReference: {fileID: 0}
     - target: {fileID: 4657891843258284536, guid: ce8b704fb803e2745bd975e15109144c, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.2111403
