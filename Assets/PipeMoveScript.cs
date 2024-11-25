@@ -7,14 +7,16 @@ public class PipeMoveScript : MonoBehaviour
 {
     public float moveSpeed = 5;
     public float deadZone = -45;
+    public LogicScript logic;
+    public bool birdIsAlive = true;
     // Start is called before the first frame update
     void Start()
     {
-        
+        logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
     }
 
     // Update is called once per frame
-    async void Update()
+    void Update()
     {
        
         transform.position = transform.position + (Vector3.left * moveSpeed) * Time.deltaTime;
@@ -24,4 +26,14 @@ public class PipeMoveScript : MonoBehaviour
             Destroy(gameObject); 
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        logic.gameOver();
+        birdIsAlive = false;
+    }
+
+
+
+
 }

@@ -9,7 +9,7 @@ public class barriergameover : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
     }
 
     // Update is called once per frame
@@ -18,9 +18,8 @@ public class barriergameover : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("AAAAAAAAAAAA");
         logic.gameOver();
         birdIsAlive = false;
     }

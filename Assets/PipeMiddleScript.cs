@@ -5,6 +5,7 @@ using UnityEngine;
 public class PipeMiddleScript : MonoBehaviour
 {
     public LogicScript logic;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +24,8 @@ public class PipeMiddleScript : MonoBehaviour
         {
             logic.addScore(1);
         }
-    
+ 
     }
+
 }
 
