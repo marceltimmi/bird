@@ -22,7 +22,7 @@ public class bird : MonoBehaviour
     {
         if (birdIsAlive == true)
         {
-            if (Input.GetKeyDown(KeyCode.Space) == true)
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0)== true)
             {
                 myRigidbody.velocity = Vector2.up * flapStrength;
             }
