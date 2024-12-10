@@ -28,7 +28,7 @@ public class SpawnPipes : MonoBehaviour
 
     void Spawn()
     {
-        int randomNumber = Random.Range(-3, 4);
+        float randomNumber = Random.Range(-2.7f, 4);
         GameObject a = Instantiate(Prefab, gameObject.transform);
         Prefab.transform.position = new Vector2(-3.754248f, randomNumber);
         
