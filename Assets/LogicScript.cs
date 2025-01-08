@@ -13,11 +13,14 @@ public class LogicScript : MonoBehaviour
     public GameObject gameOverScreen;
     public UnityEvent gameoverEvent;
 
+    public GameManager gameManager; // Referenz zum GameManager
+
     [ContextMenu("Increase Score")]
     public void addScore(int scoreToAdd)
     {
         playerScore = playerScore + scoreToAdd;  
         scoreText.text = playerScore.ToString();
+
     }
 
     public void Awake() {
@@ -29,7 +32,8 @@ public class LogicScript : MonoBehaviour
 
     public void restartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        
+        SceneManager.LoadScene("Scenes/MainMenu");
     }
 
     public void gameOver()
