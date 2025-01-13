@@ -1246,7 +1246,7 @@ MonoBehaviour:
   startLevel1Toggle: {fileID: 275680530}
   startLevel2Toggle: {fileID: 1922992314}
   confirmButton: {fileID: 1328327389}
-  requiredPointsForLevel2: 20
+  requiredPointsForLevel2: 3
 --- !u!4 &1336043648
 Transform:
   m_ObjectHideFlags: 0

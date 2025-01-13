@@ -40,5 +40,6 @@ public class LogicScript : MonoBehaviour
     {
         gameoverEvent.Invoke();
         gameOverScreen.SetActive(true);
+        LogicScript[] components = GameObject.FindObjectsOfType<LogicScript>();
     }
 }
