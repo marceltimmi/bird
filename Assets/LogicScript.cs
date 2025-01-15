@@ -40,6 +40,16 @@ public class LogicScript : MonoBehaviour
     {
         gameoverEvent.Invoke();
         gameOverScreen.SetActive(true);
-        LogicScript[] components = GameObject.FindObjectsOfType<LogicScript>();
+
+        
+        HighScore[] components = GameObject.FindObjectsOfType<HighScore>();
+        
+
+        if (playerScore > components[0].score)
+        {
+
+            components[0].score = playerScore;
+        }
+
     }
 }

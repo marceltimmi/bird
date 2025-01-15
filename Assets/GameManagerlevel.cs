@@ -8,19 +8,7 @@ public class GameManager : MonoBehaviour
     public int points = 0; // Punktestand
     public LogicScript logicScript; // Referenz zum LogicScript
 
-    void Awake()
-    {
-        // Singleton-Pattern: Nur eine Instanz des GameManagers sollte existieren
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);  // Verhindert das Löschen des GameManagers bei Szenenwechsel
-        }
-        else
-        {
-            Destroy(gameObject);  // Zerstört das doppelte GameObject
-        }
-    }
+    
 
     void Start()
     {
@@ -29,7 +17,7 @@ public class GameManager : MonoBehaviour
         {
             points = logicScript.playerScore; // Hole den Punktestand aus dem LogicScript
             UpdatePointsText(); // Aktualisiere das Textfeld mit den Punkten
-        }
+        } 
     }
 
     // Methode zum Aktualisieren des Punktestands im Textfeld

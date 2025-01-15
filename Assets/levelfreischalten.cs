@@ -7,26 +7,16 @@ public class MainMenuController : MonoBehaviour
 {
     public Toggle startLevel1Toggle;  // Toggle für Level 1
     public Toggle startLevel2Toggle;  // Toggle für Level 2
+    public Toggle startLevel3Toggle;  // Toggle für Level 3
     public Button confirmButton;      // Bestätigungsbutton
     public int requiredPointsForLevel2 = 3;  // Punkte, die für Level 2 benötigt werden
+    public int requiredPointsForLevel3 = 5;
     private string selectedLevel = "";  // Speichert das ausgewählte Level
 
     // Singleton-Pattern, um sicherzustellen, dass das Menü beim Szenenwechsel erhalten bleibt
     private static MainMenuController instance;
 
-    void Awake()
-    {
-        // Stelle sicher, dass nur eine Instanz des MainMenuControllers existiert
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);  // Verhindert das Zerstören des Objekts beim Szenenwechsel
-        }
-        else
-        {
-            Destroy(gameObject);  // Zerstört das Objekt, wenn eine Instanz schon existiert
-        }
-    }
+   
 
     void Start()
     {
@@ -64,6 +54,20 @@ public class MainMenuController : MonoBehaviour
             }
         });
 
+        // Event-Listener für Level 3 Toggle
+        startLevel3Toggle.onValueChanged.AddListener((isOn) => {
+            if (isOn)
+            {
+                selectedLevel = "Scenes/ingo";  // Speichere die Auswahl für Level 3
+                UpdateConfirmButtonState();
+            }
+            else if (selectedLevel == "Scenes/ingo")
+            {
+                selectedLevel = ""; // Lösche die Auswahl, wenn der Toggle deaktiviert wird
+                UpdateConfirmButtonState();
+            }
+        });
+
         // Bestätigungsbutton-Listener
         confirmButton.onClick.AddListener(() => {
             if (!string.IsNullOrEmpty(selectedLevel))
@@ -71,20 +75,29 @@ public class MainMenuController : MonoBehaviour
                 StartLevel(selectedLevel);
             }
         });
+
+        CheckLevelUnlock();
     }
 
     // Überprüfe, ob Level 2 freigeschaltet werden kann
-    public void CheckLevelUnlock()
+    void CheckLevelUnlock()
     {
-        if (GameManager.instance != null)
-        {
-            int points = GameManager.instance.points; // Greife auf den Punktestand im GameManager zu
+       
+            HighScore[] components = GameObject.FindObjectsOfType<HighScore>();
+            int points = components[0].score;
 
             if (points >= requiredPointsForLevel2)
             {
+            Debug.Log("level2 freigeschaltet");
                 startLevel2Toggle.interactable = true;  // Aktiviert den Toggle für Level 2
             }
+
+            if(points>= requiredPointsForLevel3)
+        {
+            Debug.Log("level3 freigeschaltet");
+            startLevel3Toggle.interactable = true;  // Aktiviert den Toggle für Level 2
         }
+        
     }
 
     // Diese Methode wird aufgerufen, wenn Level 1 abgeschlossen ist
