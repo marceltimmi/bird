@@ -12,6 +12,7 @@ public class LogicScript : MonoBehaviour
     public Text scoreText;
     public GameObject gameOverScreen;
     public UnityEvent gameoverEvent;
+    public int level;
 
     public GameManager gameManager; // Referenz zum GameManager
 
@@ -49,6 +50,7 @@ public class LogicScript : MonoBehaviour
         {
 
             components[0].score = playerScore;
+            components[0].level = level;
         }
 
     }

@@ -9,8 +9,8 @@ public class MainMenuController : MonoBehaviour
     public Toggle startLevel2Toggle;  // Toggle für Level 2
     public Toggle startLevel3Toggle;  // Toggle für Level 3
     public Button confirmButton;      // Bestätigungsbutton
-    public int requiredPointsForLevel2 = 3;  // Punkte, die für Level 2 benötigt werden
-    public int requiredPointsForLevel3 = 5;
+    public int requiredPointsForLevel2 = 10;  // Punkte, die für Level 2 benötigt werden
+    public int requiredPointsForLevel3 = 20;
     private string selectedLevel = "";  // Speichert das ausgewählte Level
 
     // Singleton-Pattern, um sicherzustellen, dass das Menü beim Szenenwechsel erhalten bleibt
@@ -85,18 +85,21 @@ public class MainMenuController : MonoBehaviour
        
             HighScore[] components = GameObject.FindObjectsOfType<HighScore>();
             int points = components[0].score;
+        if (points >= requiredPointsForLevel3 && components[0].level == 2)
+        {
+            Debug.Log("level3 freigeschaltet");
+            startLevel3Toggle.interactable = true;
+            startLevel2Toggle.interactable = true;
 
-            if (points >= requiredPointsForLevel2)
+            // Aktiviert den Toggle für Level 2
+        }
+        if (points >= requiredPointsForLevel2 && components[0].level == 1)
             {
             Debug.Log("level2 freigeschaltet");
                 startLevel2Toggle.interactable = true;  // Aktiviert den Toggle für Level 2
             }
 
-            if(points>= requiredPointsForLevel3)
-        {
-            Debug.Log("level3 freigeschaltet");
-            startLevel3Toggle.interactable = true;  // Aktiviert den Toggle für Level 2
-        }
+            
         
     }
 

@@ -7,6 +7,7 @@ public class HighScore : MonoBehaviour
     
     public static HighScore instance; // Singleton-Instanz
     public int score;
+    public int level;
 
     void Awake()
     {
@@ -30,7 +31,6 @@ public class HighScore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         
 
     }
